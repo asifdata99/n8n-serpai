@@ -78,3 +78,6 @@ what is the weather forecast for tomorrow in Toronto?
 What is the capital of Australia?
 
 what is 125 multiplied by 42?
+![Screenshot 2025-07-05 234620](https://github.com/user-attachments/assets/224835ee-13e0-4cc8-b1e5-b5eaef95206e)
+
+
