@@ -1,0 +1,166 @@
+{
+  "name": "serp_AI",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -460,
+        -40
+      ],
+      "id": "4724f322-00f4-4f49-90c7-778dc23ff353",
+      "name": "When chat message received",
+      "webhookId": "227dd2ec-8a0c-49d0-90c8-73a7608b6310"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        -40
+      ],
+      "id": "0f8f02b9-6421-4dc0-ae3f-a5df46c16f19",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -380,
+        180
+      ],
+      "id": "883ec009-975d-4eb6-b399-6450f39aad08",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "PyKbcxemsQS9p6fK",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -240,
+        200
+      ],
+      "id": "03be5a80-6f7c-4a3a-b6d0-6a57cf30336c",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        40,
+        180
+      ],
+      "id": "cb2cabb0-4c4a-4cef-9d7c-052b0dbbc868",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        180
+      ],
+      "id": "bd9f2169-ef7a-41fe-80a7-c95576ab0170",
+      "name": "SerpAPI",
+      "credentials": {
+        "serpApi": {
+          "id": "QdiR4tnJK1Wm3FXE",
+          "name": "SerpAPI account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SerpAPI": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f031028b-282d-4898-b5c9-cca87779cb1f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c4df53ec0ad3857d58b51b16900d13f108eb6c4ecbc4f40b2d880654c802c643"
+  },
+  "id": "VgsZjoF9K9bx2lOD",
+  "tags": []
+}
